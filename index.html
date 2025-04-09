@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Tsukasa Bot MD - Aluguel de Bot para WhatsApp</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+  <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+
+      font-family: 'Rubik', sans-serif;
+
+      background: #f9f9f9;
+
+      color: #333;
+
+    }
+
+    .dark-mode {
+
+      background: #121212;
+
+      color: #eee;
+
+    }
+
+    .dark-mode header,
+
+    .dark-mode footer,
+
+    .dark-mode .section {
+
+      background-color: #1e1e1e;
+
+      color: #ddd;
+
+    }
+
+    .dark-mode .plan {
+
+      background: #2a2a2a;
+
+      border-color: #4d90fe;
+
+    }
+
+    .dark-mode .faq-question::after {
+
+      color: #4d90fe;
+
+    }
+
+    header {
+
+      background-color: #fff;
+
+      padding: 3rem 1rem 2rem;
+
+      text-align: center;
+
+      border-bottom: 5px solid #007BFF;
+
+    }
+
+    header h1 {
+
+      font-size: 2.8rem;
+
+      color: #007BFF;
+
+    }
+
+    header p {
+
+      font-size: 1.2rem;
+
+      color: #444;
+
+      max-width: 700px;
+
+      margin: 1rem auto 0;
+
+    }
+
+    .container {
+
+      max-width: 1000px;
+
+      margin: 2rem auto;
+
+      padding: 1rem;
+
+    }
+
+    .section {
+
+      background-color: #fff;
+
+      margin-bottom: 2rem;
+
+      padding: 2rem;
+
+      border-radius: 20px;
+
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+
+    }
+
+    .section h2 {
+
+      color: #007BFF;
+
+      text-align: center;
+
+      margin-bottom: 1.5rem;
+
+      font-size: 2rem;
+
+    }
+
+    .section p, .section ul {
+
+      font-size: 1rem;
+
+      line-height: 1.7;
+
+      color: #555;
+
+    }
+
+    .section ul {
+
+      list-style: none;
+
+      padding-left: 1rem;
+
+    }
+
+    .section ul li {
+
+      margin-bottom: 0.7rem;
+
+      position: relative;
+
+      padding-left: 1.5rem;
+
+    }
+
+    .section ul li::before {
+
+      content: "➤";
+
+      position: absolute;
+
+      left: 0;
+
+      top: 0;
+
+      color: #007BFF;
+
+    }
+
+    .plans {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      gap: 1.5rem;
+
+      margin-top: 2rem;
+
+    }
+
+    .plan {
+
+      background: #e6f0ff;
+
+      border: 2px solid #007BFF;
+
+      padding: 1.5rem;
+
+      width: 250px;
+
+      text-align: center;
+
+      border-radius: 15px;
+
+      transition: 0.3s;
+
+      cursor: pointer;
+
+    }
+
+    .plan:hover {
+
+      transform: scale(1.05);
+
+      box-shadow: 0 0 12px rgba(0, 123, 255, 0.3);
+
+    }
+
+    .plan input {
+
+      display: none;
+
+    }
+
+    .plan h3 {
+
+      font-size: 1.4rem;
+
+      margin-bottom: 0.5rem;
+
+      color: #0056b3;
+
+    }
+
+    .plan p {
+
+      font-size: 1.2rem;
+
+      font-weight: bold;
+
+    }
+
+    .whatsapp-btn {
+
+      display: block;
+
+      width: fit-content;
+
+      margin: 2rem auto 0;
+
+      background-color: #25d366;
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 1rem 2rem;
+
+      border-radius: 30px;
+
+      font-weight: bold;
+
+      font-size: 1.1rem;
+
+      transition: 0.3s;
+
+    }
+
+    .whatsapp-btn:hover {
+
+      background-color: #1ebe5d;
+
+    }
+
+    .about {
+
+      font-style: italic;
+
+      color: #777;
+
+      text-align: center;
+
+      margin-top: 1rem;
+
+    }
+
+    .faq-item {
+
+      margin-bottom: 1rem;
+
+      border-bottom: 1px solid #cce0ff;
+
+      padding-bottom: 1rem;
+
+    }
+
+    .faq-question {
+
+      font-size: 1.1rem;
+
+      color: #007BFF;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      position: relative;
+
+      padding-right: 20px;
+
+    }
+
+    .faq-question::after {
+
+      content: "+";
+
+      position: absolute;
+
+      right: 0;
+
+      top: 0;
+
+      color: #007BFF;
+
+      font-weight: bold;
+
+      transition: transform 0.3s;
+
+    }
+
+    .faq-question.active::after {
+
+      content: "-";
+
+      transform: rotate(180deg);
+
+    }
+
+    .faq-answer {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      transition: max-height 0.5s ease, padding 0.3s ease;
+
+      font-size: 0.95rem;
+
+      color: #555;
+
+      padding-top: 0;
+
+    }
+
+    .faq-answer.open {
+
+      padding-top: 0.5rem;
+
+      max-height: 200px;
+
+    }
+
+    footer {
+
+      text-align: center;
+
+      padding: 2rem 1rem;
+
+      font-size: 0.9rem;
+
+      background-color: #fff;
+
+      border-top: 2px solid #007BFF;
+
+      color: #666;
+
+    }
+
+    @media (max-width: 768px) {
+
+      .plans {
+
+        flex-direction: column;
+
+        align-items: center;
+
+      }
+
+    }
+
+    .dark-toggle-container {
+
+      position: absolute;
+
+      top: 10px;
+
+      right: 20px;
+
+      z-index: 10;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      background: rgba(0, 0, 0, 0.4);
+
+      padding: 6px 10px;
+
+      border-radius: 20px;
+
+    }
+
+    .dark-toggle-container label {
+
+      color: #fff;
+
+      font-weight: bold;
+
+      font-size: 0.9rem;
+
+    }
+
+    .switch {
+
+      position: relative;
+
+      display: inline-block;
+
+      width: 44px;
+
+      height: 24px;
+
+    }
+
+    .switch input {
+
+      opacity: 0;
+
+      width: 0;
+
+      height: 0;
+
+    }
+
+    .slider {
+
+      position: absolute;
+
+      cursor: pointer;
+
+      top: 0;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: 0;
+
+      background-color: #ccc;
+
+      transition: 0.4s;
+
+      border-radius: 34px;
+
+    }
+
+    .slider:before {
+
+      position: absolute;
+
+      content: "";
+
+      height: 18px;
+
+      width: 18px;
+
+      left: 3px;
+
+      bottom: 3px;
+
+      background-color: white;
+
+      transition: 0.4s;
+
+      border-radius: 50%;
+
+    }
+
+    input:checked + .slider {
+
+      background-color: #2196F3;
+
+    }
+
+    input:checked + .slider:before {
+
+      transform: translateX(20px);
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="dark-toggle-container">
+
+    <label for="darkToggle">Ativar modo escuro</label>
+
+    <label class="switch">
+
+      <input type="checkbox" id="darkToggle">
+
+      <span class="slider"></span>
+
+    </label>
+
+  </div>
+
+  <img src="https://i.imgur.com/bb5KBF0.jpeg" alt="Banner" style="width: 100%; display: block;">
+
+  <header>
+
+    <h1>JINWOO BOT MD</h1>
+
+    <p>Jinwoo  é um bot completo e avançado pra WhatsApp, feito pra te ajudar a gerenciar grupos, criar figurinhas, baixar mídia e muito mais. Sempre online, rápido e estável, ele responde comandos com super velocidade e conta com mais de 1000 funções atualizadas. Ideal pra manter seus grupos protegidos, organizados e cheios de diversão, com recursos avançados, suporte ativo e ferramentas contra ataques. É a escolha certa pra quem quer praticidade e zoeira no mesmo pacote.</p>
+
+  </header>
+
+  <main class="container">
+
+    <section class="section">
+
+      <h2>Como Funciona o Jinwoo?</h2>
+
+      <p>Quando você aluga o Jinwoo Bot, recebe uma key. Com essa key, é só jogar no grupo e adicionar o bot como administrador. Ele vai iniciar suas funções automaticamente. Você recebe suporte 24h, estabilidade, segurança e comandos sempre atualizados.</p>
+
+    </section>
+
+    <section class="section">
+
+      <h2>Funções do Jinwoo</h2>
+
+      <ul>
+
+        <li>Criação de figurinhas com imagem, vídeo ou texto</li>
+
+        <li>Download de músicas e vídeos (YouTube, TikTok, etc.)</li>
+
+        <li>Comandos de diversão e interação no grupo</li>
+
+        <li>Recursos exclusivos pra administradores</li>
+
+        <li>Anti-links, anti-pornô, anti-audio, entre outros</li>
+
+        <li>Mais de 1000 comandos disponíveis</li>
+
+      </ul>
+
+    </section>
+
+    <section class="section">
+
+      <h2>Planos de Aluguel</h2>
+
+      <form id="form-plano">
+
+        <div class="plans">
+
+          <label class="plan">
+
+            <input type="radio" name="plano" value="15 dias" />
+
+            <h3>7 Dias</h3>
+
+            <p>R$ 7,00</p>
+
+          </label>
+
+          <label class="plan">
+
+            <input type="radio" name="plano" value="1 mês" />
+
+            <h3>15 Dias</h3>
+
+            <p>R$ 18,00</p>
+
+          </label>
+
+          <label class="plan">
+
+            <input type="radio" name="plano" value="2 meses" />
+
+            <h3>1 Mês</h3>
+
+            <p>R$ 30,00</p>
+
+          </label>
+
+          <label class="plan">
+
+            <input type="radio" name="plano" value="Vitalício" />
+
+            <h3>Permanente</h3>
+
+            <p>R$ 55,00</p>
+
+          </label>
+
+        </div>
+
+       <a id="alugar" href="#" class="whatsapp-btn">Venha alugar agora</a>
+
+      </form>
+
+    </section>
+
+    <section class="section">
+
+      <h2>Dúvidas Frequentes</h2>
+
+      <div class="faq-item">
+
+        <div class="faq-question">O bot pode banir meu número?</div>
+
+        <div class="faq-answer">Não, ele usa outro número e não afeta sua conta.</div>
+
+      </div>
+
+      <div class="faq-item">
+
+        <div class="faq-question">Preciso instalar algo?</div>
+
+        <div class="faq-answer">Nada! Só chamar o bot no WhatsApp e ativar com sua key.</div>
+
+      </div>
+
+      <div class="faq-item">
+
+        <div class="faq-question">Posso usar em vários grupos?</div>
+
+        <div class="faq-answer">Pode sim! Mas cada grupo precisa de uma key diferente.</div>
+
+      </div>
+
+      <div class="faq-item">
+
+        <div class="faq-question">Tem suporte?</div>
+
+        <div class="faq-answer">Suporte 24h garantido diretamente comigo.</div>
+
+      </div>
+
+      <div class="faq-item">
+
+        <div class="faq-question">O pagamento é confiável?</div>
+
+        <div class="faq-answer">100% seguro. Você paga via Pix, envia o comprovante e já recebe sua key.</div>
+
+      </div>
+
+    </section>
+
+    <p class="about">Site criado por V.H DOMINA - (85) 99826-1859</p>
+
+  </main>
+
+  <footer>
+
+    &copy; 2025 - Daniel Zk • Todos os direitos reservados
+
+  </footer>
+
+  <script>
+
+    const questions = document.querySelectorAll('.faq-question');
+
+    questions.forEach(q => {
+
+      q.addEventListener('click', () => {
+
+        const answer = q.nextElementSibling;
+
+        q.classList.toggle('active');
+
+        answer.classList.toggle('open');
+
+      });
+
+    });
+
+    document.getElementById('alugar').addEventListener('click', function (e) {
+
+      e.preventDefault();
+
+      const planoSelecionado = document.querySelector('input[name="plano"]:checked');
+
+      if (!planoSelecionado) {
+
+        alert('Selecione um plano primeiro');
+
+        return;
+
+      }
+
+      const plano = planoSelecionado.value;
+
+      const mensagem = encodeURIComponent(`Olá eu gostaria de solicitar o bot jinwoo por ${plano}`);
+
+      const numero = '558781044375';
+
+      window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
+
+    });
+
+    document.getElementById('darkToggle').addEventListener('change', function () {
+
+      document.body.classList.toggle('dark-mode');
+
+    });
+
+  </script>
+
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
